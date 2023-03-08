@@ -38,6 +38,8 @@ function Home() {
                     contents,
                     isDone :false,
                 }))
+                setTitle('');
+                setContents('');
             }}>추가하기</Btn>
         </InputBox>
         <ListTitle>Working..</ListTitle>
