@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addList, changeList, deleteList } from '../redux/modules/todolist';
 import { Link } from 'react-router-dom';
@@ -20,6 +20,12 @@ function Home() {
     const contentsChangeHandler =(e) => {
         setContents(e.target.value);
     }
+    
+    const idRef =useRef('');
+
+    useEffect (()=>{
+      idRef.current.focus(); //렌더링시 id창에 focus 되게!
+    },[]);
 
   return (
     <>
@@ -28,7 +34,7 @@ function Home() {
         <TitleBox/>
         <InputBox>
             title &nbsp;
-            <Contents value={title} onChange={titleChangeHandler}/>
+            <Contents ref={idRef} value={title} onChange={titleChangeHandler}/>
             &nbsp; contents &nbsp;
             <Contents value={contents} onChange={contentsChangeHandler}/>
             <Btn onClick={() => {
